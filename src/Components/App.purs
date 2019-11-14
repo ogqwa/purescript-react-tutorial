@@ -2,11 +2,11 @@ module Components.App where
 
 import Prelude
 
+import Components.Board as Borad
 import Data.Array as Array
-import Data.Maybe (Maybe(..), maybe)
+import Data.Maybe (Maybe(..))
 import React.Basic (Component, JSX, createComponent, make)
 import React.Basic.DOM as R
-import React.Basic.Events (handler_)
 
 
 
@@ -26,58 +26,7 @@ counter = make component
       R.div
       { className: "game"
       , children:
-        [ R.div
-          { className: "game-board"
-          , children:
-            [ R.div 
-              { className: "status"
-              , children:
-                [ R.text "status" ]
-              }
-            , R.div
-              { className: "board-row"
-              , children:
-                  (\i ->
-                    R.button
-                    { className: "square"
-                    , children:
-                      [ R.text
-                          case Array.index self.state.squares i of
-                            Just v -> maybe "" (\v' -> v') v
-                            Nothing -> "" 
-                      ]
-                    }) <$> Array.range 0 2
-              }
-            , R.div
-              { className: "board-row"
-              , children: 
-                  (\i ->
-                    R.button
-                    { className: "square"
-                    , children:
-                      [ R.text
-                        case Array.index self.state.squares i of
-                          Just v -> maybe "" (\v' -> v') v
-                          Nothing -> "" 
-                      ]
-                    }) <$> Array.range 3 5
-              }
-            , R.div
-              { className: "board-row"
-              , children: 
-                  (\i ->
-                    R.button
-                    { className: "square"
-                    , children:
-                      [ R.text
-                        case Array.index self.state.squares i of
-                          Just v -> maybe "" (\v' -> v') v
-                          Nothing -> "" 
-                      ]
-                    }) <$> Array.range 6 8
-              }
-            ]
-          }
+        [ Borad.board
         , R.div
           { className: "game-info"
           , children:
