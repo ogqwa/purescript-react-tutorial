@@ -3,6 +3,11 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "scripts": {
+    "compile": "spago build",
+    "pscid": "pscid",
+    "serve": "spago build && parcel serve --no-source-maps index.html"
+  },
   "dependencies": {
     "purescript": "^0.13.4",
     "react": "^16.11.0",
